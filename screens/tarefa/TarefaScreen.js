@@ -5,7 +5,7 @@ function TarefaScreen() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           
-            <Text>Tarefas</Text>
+            <Text>Tarefas</Text>    
         </View>
     );
 }
