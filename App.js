@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/home/HomeScreen';
+import CronometroScreen from './screens/cronometro/CronometroScreen';
 
 const Tab = createBottomTabNavigator();export default function App() {
 return (
