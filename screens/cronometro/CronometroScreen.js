@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-function HomeScreen() {
+function CronometroScreen() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           
-            <Text>Home Screen</Text>
+            <Text>Cronometro</Text>
         </View>
     );
 }
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
         marginBottom: 20
     }
 });
-export default HomeScreen; 
+export default CronometroScreen; 
