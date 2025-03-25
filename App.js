@@ -1,8 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/home/HomeScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CronometroScreen from './screens/cronometro/CronometroScreen';
 import TarefaScreen from './screens/tarefa/TarefaScreen';
+
+const Tab = createBottomTabNavigator();
 
 const Drawer = createDrawerNavigator();
 
@@ -16,6 +19,8 @@ export default function App() {
     
     </Drawer.Navigator>
     </NavigationContainer>
+
+ 
     );
     }
 
