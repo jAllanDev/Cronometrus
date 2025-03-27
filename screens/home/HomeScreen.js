@@ -4,7 +4,10 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 function HomeScreen() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          
+  <Image 
+    style={{ width: 300, height: 250 }} 
+    source={{ uri: 'https://png.pngtree.com/png-clipart/20231013/original/pngtree-simple-yellow-stopwatch-icon-vector-png-image_13296184.png' }} 
+/>
             <Text>Home Screen</Text>
         </View>
     );
