@@ -39,7 +39,7 @@ const CronometroScreen = () => {
 
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Cronômetro">
+      <Tab.Screen name="Simples">
         {(props) => (
           <View style={styles.container}>
             <Text style={styles.timerText}>{formatTime(seconds)}</Text>

@@ -6,17 +6,27 @@ import CustomButton from '../../componentes/CustomButton/CustomButton';
 import TextInputBox from '../../componentes/TextInputBox/TextInputBox';
 import { Ionicons } from '@expo/vector-icons';
 import ListarScreen from './listar/ListarScreen';
-import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Tab = createBottomTabNavigator();
 
-function TarefaScreen() {
+function TarefaScreen({ salvarTarefa}) {
   const [tarefa, setTarefa] = useState("");
   const [data, setData] = useState("");
 
   const handleSalvar = () => {
-    console.log(`Tarefa: ${tarefa}, Data: ${data}`);
-  };
+    if (!tarefa || !data) {
+      alert("Preencha todos os campos!");
+      return;
+    }    
+
+    // Call na função pra salvar tarefa
+    salvarTarefa(tarefa, data);
+
+    // Limpa os campos
+    setTarefa("");
+    setData("");
+    alert("Tarefa salva com sucesso!");
+    };
 
   return (
     <View style={styles.container}>
@@ -26,14 +36,14 @@ function TarefaScreen() {
       <TextInputBox
         value={tarefa}
         onChangeText={setTarefa}
-        placeholder="Digite a tarefa"
+        placeholder="Descrição da tarefa"
         keyboardType="default"
       />
 
       <TextInputBox
         value={data}
         onChangeText={setData}
-        placeholder="Digite a data"
+        placeholder="Digite a data da tarefa"
         keyboardType="numeric"
       />
 
@@ -45,6 +55,17 @@ function TarefaScreen() {
 // Tab.Navigator da Screen tarefas
 
 function TarefaNavigator() {
+  // Estado elevado para armazenar as tarefas
+  const [tarefas, setTarefas] = useState([]);
+
+  const salvarTarefa = (descricao, data) => {
+    const novaTarefa = {
+      id: Date.now(),
+      descricao,
+      data
+    };
+    setTarefas([...tarefas, novaTarefa]);
+  }
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -64,8 +85,12 @@ function TarefaNavigator() {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="Cadastro" component={TarefaScreen} />
-      <Tab.Screen name="Listar" component={ListarScreen} />
+    <Tab.Screen name="Cadastro">
+        {props => <TarefaScreen {...props} salvarTarefa={salvarTarefa} />}
+      </Tab.Screen>
+      <Tab.Screen name="Listar">
+        {props => <ListarScreen {...props} tarefas={tarefas} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
